@@ -1,4 +1,8 @@
-'''cli.py'''
+'''cli.py
+
+two function: decode/encode
+
+'''
 
 import argparse
 import pathlib
