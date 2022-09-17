@@ -22,6 +22,12 @@ class CustomFormatter(argparse.RawDescriptionHelpFormatter,
                       argparse.ArgumentDefaultsHelpFormatter):
     pass
 
+def decode_func(args):
+    pass
+
+def encode_func(args):
+    pass
+
 def read_user_cli_args():
     '''Handle the CLI arguments and options'''
     
@@ -39,6 +45,8 @@ def read_user_cli_args():
                                type=pathlib.Path,
                                required = False,
                                help='path to the image containing the QR code')
+    
+    parser_decode.set_defaults(func=decode_func)
 
     ## https://stackoverflow.com/q/73718877
     parser_decode.add_argument('--url',
@@ -48,6 +56,10 @@ def read_user_cli_args():
 
     parser_encode = subparsers.add_parser('encode',
                                           help='Encodes data into a QR code')
+    
+    parser_encode.set_defaults(func=encode_func)
+    
+    
     
     
     
