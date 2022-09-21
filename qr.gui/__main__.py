@@ -16,14 +16,17 @@ class App(tk.Tk):
     def create_body_frame(self):
         '''will contain a notebook with two tabs, encode and decode'''
         
+        sticky = ( tk.N, tk.S, tk.E, tk.W )
+        paddings = {'padx':5, 'pady':5}
+        
         self.notebook = ttk.Notebook(self)
-        self.notebook.pack(padx=5, pady=5, expand=True)
+        self.notebook.pack(**paddings, expand=True)
     
     def create_footer_frame(self):
         
         self.footer = ttk.Frame(self)
         sticky = ( tk.N, tk.S, tk.E, tk.W )
-        paddints = {'padx':5, 'pady':5}
+        paddings = {'padx':5, 'pady':5}
 
         # configure the grid
         self.footer.columnconfigure(0, weight=4,uniform='column')
@@ -34,10 +37,10 @@ class App(tk.Tk):
         self.discard_button = ttk.Button(self.footer,
                                          text="Discard",
                                          command=lambda: self.destroy(),)
-        self.discard_button.grid(column=1, row=0, sticky=sticky, **paddints)
+        self.discard_button.grid(column=1, row=0, sticky=sticky, **paddings)
         
         # attach the footer frame
-        self.footer.pack(**paddints)
+        self.footer.pack(**paddings)
         
         
 
