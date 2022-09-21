@@ -20,7 +20,25 @@ class App(tk.Tk):
         self.notebook.pack(padx=5, pady=5, expand=True)
     
     def create_footer_frame(self):
-        pass
+        
+        self.footer = ttk.Frame(self)
+        sticky = ( tk.N, tk.S, tk.E, tk.W )
+        paddints = {'padx':5, 'pady':5}
+
+        # configure the grid
+        self.footer.columnconfigure(0, weight=4,uniform='column')
+        self.footer.columnconfigure(1, weight=1,uniform='column')
+        self.footer.columnconfigure(2, weight=4,uniform='column')
+        
+
+        self.discard_button = ttk.Button(self.footer,
+                                         text="Discard",
+                                         command=lambda: self.destroy(),)
+        self.discard_button.grid(column=1, row=0, sticky=sticky, **paddints)
+        
+        # attach the footer frame
+        self.footer.pack(**paddints)
+        
         
 
 if __name__ == '__main__':
